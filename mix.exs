@@ -10,12 +10,11 @@ defmodule StrongAsFuck.Mixfile do
      deps: deps()]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [
+      extra_applications: [:logger, :poolboy],
+      mod: {StrongAsFuck.Application, []}
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -28,6 +27,14 @@ defmodule StrongAsFuck.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:gproc, "~> 0.5.0"},
+      {:cowboy, "~> 1.0.0"},
+      {:plug, "~> 1.4.0"},
+      {:poison, "~> 3.1"},
+      {:poolboy, "~> 1.5.1"},
+      {:httpoison, "~> 0.13.0", only: :test},
+      {:meck, "~> 0.8.6", only: :test}
+    ]
   end
 end
