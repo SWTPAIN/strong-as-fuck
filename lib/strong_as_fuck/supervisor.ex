@@ -8,8 +8,7 @@ defmodule StrongAsFuck.Supervisor do
   def init(_args) do
     children = [
       supervisor(StrongAsFuck.Database, []),
-      supervisor(StrongAsFuck.ServerSupervisor, []),
-      worker(StrongAsFuck.Cache, [])
+      supervisor(StrongAsFuck.ServerSupervisor, [])
     ]
     supervise(children, strategy: :one_for_one)
   end

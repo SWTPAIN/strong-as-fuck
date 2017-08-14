@@ -23,7 +23,7 @@ defmodule StrongAsFuck.Database do
   end
 
   def insert(key, data) do
-    r = :poolboy.transaction(
+    :poolboy.transaction(
       DatabaseSupervisor.pool_name(),
       fn(pid) ->
         GenServer.call(pid, {:insert, key, data})

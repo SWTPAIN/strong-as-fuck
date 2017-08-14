@@ -61,7 +61,7 @@ defmodule StrongAsFuck.Web do
 
   defp respond(conn) do
     conn
-    |> Plug.Conn.put_resp_content_type("text/plain")
+    |> Plug.Conn.put_resp_content_type("application/json")
     |> Plug.Conn.send_resp(200, conn.assigns[:response])
   end
 
